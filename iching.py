@@ -1,93 +1,40 @@
-i, j, coin, seq = 0, 6, 0, []
-print("Grab a coin that is on your wallet for more than 2 weeks and throw it six times, answering the head or tails question." )
-while i < j and coin < 2:
-    coin = int(input("Head[0] or Tails[1]: "))
-    if coin == 0:
-        seq.append(0)
-    elif coin == 1:
-        seq.append(1)
+i, j, seq, seq2 = 0, 6, [], []
+print("Toss three coins at the same time six times, answering the head or tails question." )
+while i < j:
+    head = int(input("Number of coins that turned head: "))
+    tails = int(input("Number of coins that turned tails: "))
+    if head + tails == 3:
+        head = head*3
+        tails = tails*2
+        line = head + tails
+        seq.append(line)
+        i = i +1
     else:
-        print("Only 1 or 0.")
-        i -= 1
-        coin = 0
-    i += 1
+        print("You need to toss THREE coins.")
+    print("")
 
-#1st Trigram
-if seq[0] == 0:
-    print("___")
-    if seq[1] == 0:
-        print("___")
-        if seq[2] == 0:
-            print("___")
-            t1 = "Qian (Heaven)"
-        else:
-            print("_ _")
-            t1 = "Xun (Wind)"
+#Present Hexagram
+print("Present Hexagram:")
+for x in seq:
+    if x == 9:
+        h = ("___")
+    elif x == 8:
+        h = ("_ _")    
+    elif x == 7:
+         h = ("___")
     else:
-        print("_ _")
-        if seq[2] == 0:
-            print("___")
-            t1 = "Li (Fire)"
-        else:
-            print("_ _")
-            t1 = "Gen (Mountain)"
-else:
-    print("_ _")
-    if seq[1] == 0:
-        print("___")
-        if seq[2] == 0:
-            print("___")
-            t1 = "Dui (Lake)"
-        else:
-            print("_ _")
-            t1 = "Kan (Water)"
-    else:
-        print("_ _")
-        if seq[2] == 0:
-            print("___")
-            t1 = "Zhen (Thunder)"
-        else:
-            print("_ _")
-            t1 = "Kun (Earth)"
-print(t1)
+        h = ("_ _")
+    print(h)
 print("")
-
-#2nd Trigram
-if seq[3] == 0:
-    print("___")
-    if seq[4] == 0:
-        print("___")
-        if seq[5] == 0:
-            print("___")
-            t2 = "Qian (Heaven)"
-        else:
-            print("_ _")
-            t2 = "Xun (Wind)"
+#Future Hexagram
+print("Future Hexagram:")
+for x in seq:
+    if x == 9:
+        h = ("_ _")
+    elif x == 8:
+        h = ("_ _")
+    elif x == 7:
+         h = ("___")
     else:
-        print("_ _")
-        if seq[5] == 0:
-            print("___")
-            t2 = "Li (Fire)"
-        else:
-            print("_ _")
-            t2 = "Gen (Mountain)"
-else:
-    print("_ _")
-    if seq[4] == 0:
-        print("___")
-        if seq[5] == 0:
-            print("___")
-            t2 = "Dui (Lake)"
-        else:
-            print("_ _")
-            t2 = "Kan (Water)"
-    else:
-        print("_ _")
-        if seq[5] == 0:
-            print("___")
-            t2 = "Zhen (Thunder)"
-        else:
-            print("_ _")
-            t2 = "Kun (Earth)"
-print(t2)
-print("")
+        h = ("___")
+    print(h)
