@@ -1,4 +1,5 @@
 from colorama import Fore, Back, Style
+import random
 i, j, seq, seq2 = 0, 6, [], []
 
 def name_trigram(seq2):
@@ -32,24 +33,34 @@ f = open("yinyang.txt", "r")
 print(f.read())
 f.close()
 
-print("Wich method do you want to use?\nThe coins [0] or Random fortune [1]?")
-
-
-print("Toss three coins at the same time six times, answering the head or tails question." )
-while i < j:
-    print("Throw #", (i+1))
-    head = int(input("Number of coins that turned head: "))
-    tails = int(input("Number of coins that turned tails: "))
-    if head + tails == 3:
-        head = head*3
-        tails = tails*2
+choose = int(input("Wich method do you want to use?\nThe coins [0] or Random fortune [1]?"))
+if choose == 0:
+    print("Toss three coins at the same time six times, answering the head or tails question." )
+    while i < j:
+        print("Throw #", (i+1))
+        head = int(input("Number of coins that turned head: "))
+        tails = int(input("Number of coins that turned tails: "))
+        if head + tails == 3:
+            head = head*3
+            tails = tails*2
+            line = head + tails
+            seq.append(line)
+            i = i +1
+        else:
+            print(Fore.RED + " '\033[1m' You need to toss THREE coins. '\033[1m'")
+            print(Style.RESET_ALL)
+        print("")
+else:
+    for n in range(6):
+        head, tails, line = 0, 0, 0
+        for m in range(3):
+            coin = random.randint(0,1)
+            if coin == 1:
+                head = head + 3
+            else:
+                tails = tails + 2
         line = head + tails
         seq.append(line)
-        i = i +1
-    else:
-        print(Fore.RED + " '\033[1m' You need to toss THREE coins. '\033[1m'")
-        print(Style.RESET_ALL)
-    print("")
 
 #Present Hexagram
 print("Present Hexagram:")
