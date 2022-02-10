@@ -1,10 +1,39 @@
 from colorama import Fore, Back, Style
 i, j, seq, seq2 = 0, 6, [], []
 
+def name_trigram(seq2):
+    if seq2[0] == 1:
+        if seq2[1] == 1:
+            if seq2[2] == 1:
+                phname = "Qián (Heaven)"
+            else:
+                phname = "Xùn (Wind)"
+        else:
+            if seq2[2] == 1:
+                phname = "Lí (Fire)"
+            else:
+                phname = "Gèn (Mountain)"
+    else:
+        if seq2[1] == 1:
+            if seq2[2] == 1:
+                phname = "Dui (Lake)"
+            else:
+                phname = "Kǎn (Water)"
+        else:
+            if seq2[2] == 1:
+                phname = "Zhèn (Thunder)"
+            else:
+                phname = "Kūn (Earth)"
+    seq2 = []
+    print(phname)
+
 #Display Fo-Hi
 f = open("yinyang.txt", "r")
 print(f.read())
 f.close()
+
+print("Wich method do you want to use?\nThe coins [0] or Random fortune [1]?")
+
 
 print("Toss three coins at the same time six times, answering the head or tails question." )
 while i < j:
@@ -24,26 +53,44 @@ while i < j:
 
 #Present Hexagram
 print("Present Hexagram:")
+loop = 0
 for x in seq:
     if x == 9:
         h = (" ________________\n/________________/")
+        seq2.append(1)
     elif x == 8:
-        h = (" _______   _______\n/_______/ /_______/")    
+        h = (" _______   _______\n/_______/ /_______/")
+        seq2.append(0)
     elif x == 7:
          h = (" ________________\n/________________/")
+         seq2.append(1)
     else:
         h = (" _______   _______\n/_______/ /_______/")
+        seq2.append(0)
     print(h)
+    if loop == 2 or loop == 5:
+        name_trigram(seq2)
+        seq2 = []
+    loop = loop + 1
 print("")
 #Future Hexagram
 print("Future Hexagram:")
+loop = 0
 for x in seq:
     if x == 9:
         h = (" _______   _______\n/_______/ /_______/")
+        seq2.append(0)
     elif x == 8:
         h = (" _______   _______\n/_______/ /_______/")
+        seq2.append(0)
     elif x == 7:
          h = (" ________________\n/________________/")
+         seq2.append(1)
     else:
         h = (" ________________\n/________________/")
+        seq2.append(1)
     print(h)
+    if loop == 2 or loop == 5:
+        name_trigram(seq2)
+        seq2 = []
+    loop = loop + 1
