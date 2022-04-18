@@ -1,1 +1,2 @@
-# i-ching
+# I-ching
+![Example image](iching.png)
